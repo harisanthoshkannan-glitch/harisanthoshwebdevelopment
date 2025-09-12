@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harisanthosh Portfolio</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f4f4f4;
+    }
+    header {
+        background: #333;
+        color: #fff;
+        padding: 15px;
+        text-align: center;
+    }
+    header img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+        border: 3px solid #fff;
+    }
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background: #444;
+    }
+    nav button {
+        background: #444;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    nav button:hover, nav button.active {
+        background: #222;
+        border-bottom: 2px solid #ff9800;
+    }
+    #content {
+        max-width: 900px;
+        margin: 20px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+    #content.show {
+        opacity: 1;
+    }
+    h2 {
+        color: #333;
+    }
+    .project, .edu, .activity {
+        margin-bottom: 10px;
+        padding: 10px;
+        background: #f9f9f9;
+        border-left: 4px solid #333;
+    }
+    .about-photo {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-bottom: 15px;
+        border: 3px solid #333;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <img src="images.png" alt="Profile Photo">
+    <h1>Harisanthosh Portfolio</h1>
+</header>
+
+<nav>
+    <button onclick="showSection('home')">Home</button>
+    <button onclick="showSection('about')">About</button>
+    <button onclick="showSection('education')">Education</button>
+    <button onclick="showSection('activities')">Extra Curricular</button>
+    <button onclick="showSection('projects')">Projects</button>
+    <button onclick="showSection('biodata')">Bio Data</button>
+    <button onclick="showSection('contact')">Contact</button>
+</nav>
+
+<div id="content"></div>
+
+<script>
+    function showSection(section) {
+        let content = document.getElementById('content');
+        document.querySelectorAll("nav button").forEach(btn => btn.classList.remove("active"));
+        event.target.classList.add("active");
+        content.classList.remove("show");
+
+        setTimeout(() => {
+            if (section === 'home') {
+                content.innerHTML = `
+                    <h2>Welcome!</h2>
+                    <p>Hello!...Welcome to my portfolio</p>
+                `;
+            } else if (section === 'about') {
+                content.innerHTML = `
+                    <h2>About Me</h2>
+                    <img src="IMG_20250911_205032_447~2.jpg" alt="My Photo" class="about-photo">
+                    <p>I am a leaner HTML, CSS, and JavaScript. I love creating interactive and user-friendly websites.</p>
+                    <a href="vishnu resume.pdf_20250226_110251_0000.png" download>
+                        <button style="margin-top:10px; background:#333; color:#fff; padding:8px 16px; border:none; border-radius:5px;">Download Resume</button>
+                    </a>
+                `;
+            } else if (section === 'education') {
+                content.innerHTML = `
+                    <h2>Education</h2>
+                    <div class="edu"><strong>I pursuing Bachelor of Computer Science At Terf's Academy College of Arts and science</strong> -Bharathiar University (2024 - 2027)</div>
+                    <div class="edu"><strong>Higher Secondary</strong> - Govt.Higher.sec. School, Ganapathi palayam,palladam,tiruppur(2021 - 2023)</div>
+                    <div class="edu"><strong>Secondary School</strong> - PUM School,Pollachi,covai (2016 - 2018)</div>
+                `;
+            } else if (section === 'activities') {
+                content.innerHTML = `
+                    <h2>Extra Curricular Activities</h2>
+                    <div class="activity"> Winner of Inter-College Coding Papper presentaion 2025</div>
+                    <div class="activity">Active Member of Debate & Public Speaking Club</div>
+                    <div class="activity"> Represented School Cricket Team at District Level</div>
+                `;
+            } else if (section === 'projects') {
+                content.innerHTML = `
+                    <h2>My Projects</h2>
+                    <div class="project"><strong>Portfolio Website</strong> - A simple responsive portfolio.</div>
+                    <div class="project"><strong>To-Do App</strong> - A task management web application.</div>
+                    <div class="project"><strong>Calculator</strong> - A simple calculator built with JavaScript.</div>
+                `;
+            } else if (section === 'biodata') {
+                content.innerHTML = `
+                    <h2>Bio Data</h2>
+                    <p><strong>Name:</strong>Harisanthosh.K</p>
+                    <p><strong>Date of Birth:</strong> 19/11/2005</p>
+                    <p><strong>Gender:</strong> Male</p>
+                    <p><strong>Address:</strong>10/196c kunnagal palayam,tiruppur,karaipudhur uraichi</p>
+                    <p><strong>Languages Known:</strong> English,Tamil</p>
+                    <p><strong>Hobbies:</strong>Speeking,Editing,Story writing</p>
+                `;
+            } else if (section === 'contact') {
+                content.innerHTML = `
+                    <h2>Contact Me</h2>
+                    <p>Email: harisanthoshkannan@gmail.com</p>
+                    <p>Phone: 9840218446</p>
+                    <p>
+                        <a href="https://github.com/harisanthoshwebdevlopment" target="_blank">GitHub</a> |
+                        <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a> |
+                     
+                    </p>
+                `;
+            }
+            content.classList.add("show");
+        }, 200);
+    }
+
+    // Load Home section by default
+    showSection('home');
+</script>
+
+</body>
+</html>
